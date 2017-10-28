@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qdu.mapping.BatchMapping">
+	<resultMap type="com.qdu.pojo.Batch" id="BatchResult">
+		<id property="cid" column="CID" />
+			<result property="cyear" column="CYear" />
+			<result property="cname" column="CName" />
+	</resultMap>
+
+</mapper>
+

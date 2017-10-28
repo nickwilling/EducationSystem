@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qdu.mapping.AttendanceMapping">
+	<resultMap type="com.qdu.pojo.Attendance" id="AttendanceResult">
+		<id property="aid" column="AID" />
+		<result property="adate" column="ADate" />
+		<result property="aweek" column="AWeek" />
+		<result property="astate" column="AState" />
+		
+		<association property="teachingProgramDetail" javaType="com.qdu.pojo.TeachingProgramDetail">
+			<id property="tpdid" column="TPDID" />
+			<result property="tpdyear" column="TPDYear" />
+			<result property="tpdseason" column="TPDSeason" />
+			<result property="tpdweek" column="TPDWeek" />
+			<result property="tpdweekDay" column="TPDWeekDay" />
+			<result property="tpdlessonTime" column="TPDLessonTime" />
+			<result property="tpdlocation" column="TPDLocation" />
+			
+			<association property="teachingProgram" javaType="com.qdu.pojo.TeachingProgram">
+			<id property="tid" column="TID" />
+			
+			<association property="batch" javaType="com.qdu.pojo.Batch">
+			<id property="cid" column="CID" />
+			<result property="cyear" column="CYear" />
+			<result property="cname" column="CName" />
+			</association>
+			
+			<association property="course" javaType="com.qdu.pojo.Course">
+			<id property="courseId" column="CourseID" />
+			<result property="courseName" column="CourseName" />
+			<result property="courseExamMethod" column="CourseExamMethod" />
+			<result property="coursecredit" column="Coursecredit" />
+			<result property="courseSchoolHour" column="CourseSchoolHour" />
+			
+			<association property="teacher" javaType="com.qdu.pojo.Teacher">
+			<id property="teacherId" column="TeacherID" />
+			<result property="teacherName" column="TeacherName" />
+			<result property="teacherPwd" column="TeacherPwd" />
+			<result property="teacherGender" column="TeacherGender" />
+			</association>
+			
+			</association>
+			
+			<association property="teacher" javaType="com.qdu.pojo.Teacher">
+			<id property="teacherId" column="TeacherID" />
+			<result property="teacherName" column="TeacherName" />
+			<result property="teacherPwd" column="TeacherPwd" />
+			<result property="teacherGender" column="TeacherGender" />
+			</association>
+			
+			</association>
+			
+		</association>
+
+	</resultMap>
+
+</mapper>
+
