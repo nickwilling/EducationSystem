@@ -5,24 +5,20 @@
 		<id property="cdetailId" column="CDetailID" />
 		<result property="cdetailCotent" column="CDetailCotent" />
 		<result property="cdetailSchoolHour" column="CDetailSchoolHour" />
-		
-		<association property="course" javaType="com.qdu.pojo.Course">
-			<id property="courseId" column="CourseID" />
-			<result property="courseName" column="CourseName" />
-			<result property="courseExamMethod" column="CourseExamMethod" />
-			<result property="coursecredit" column="Coursecredit" />
-			<result property="courseSchoolHour" column="CourseSchoolHour" />
-			
-			<association property="teacher" javaType="com.qdu.pojo.Teacher">
-			<id property="teacherId" column="TeacherID" />
-			<result property="teacherName" column="TeacherName" />
-			<result property="teacherPwd" column="TeacherPwd" />
-			<result property="teacherGender" column="TeacherGender" />
-			</association>
-			
-			</association>
-
+		<association property="course" column="CourseID" select="com.qdu.mapping.CourseMapping.selectCourseById"/>
 	</resultMap>
+	
+	<select id="selectCourseDetailById" resultMap="CourseDetailResult">
+		select * from
+		CourseDetail
+		where CDetailID = #{cdetailId}
+	</select>
+	
+	<select id="getCourseDetailList" parameterType="String"
+		resultMap="CourseDetailResult">
+		select * from
+		CourseDetail where CourseID=#{courseId}
+	</select>
 
 </mapper>
 

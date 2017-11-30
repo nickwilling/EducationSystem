@@ -3,18 +3,39 @@
 <mapper namespace="com.qdu.mapping.StudentMapping">
 	<resultMap type="com.qdu.pojo.Student" id="StudentResult">
 		<id property="studentId" column="StudentID" />
-			<result property="studentName" column="StudentName" />
-			<result property="studentPwd" column="StudentPwd" />
-			<result property="studentGender" column="StudentGender" />
-			<result property="studentGrade" column="StudentGrade" />
-			
-			<association property="batch" javaType="com.qdu.pojo.Batch">
-			<id property="cid" column="CID" />
-			<result property="cyear" column="CYear" />
-			<result property="cname" column="CName" />
-			</association>
-
+		<result property="studentName" column="StudentName" />
+		<result property="studentPwd" column="StudentPwd" />
+		<result property="studentGender" column="StudentGender" />
+		<result property="studentGrade" column="StudentGrade" />
+		<association property="batch" column="StudentBatch"
+			select="com.qdu.mapping.BatchMapping.selectBatchById" />
+		<collection property="attendances" column="StudentID"
+			select="com.qdu.mapping.AttendanceMapping.getAttendanceListByStudent" />
+		<collection property="courseFeedBacks" column="StudentID"
+			select="com.qdu.mapping.CourseFeedBackMapping.getCourseFeedBackListByStudent" />
+		<collection property="teacherFeedBacks" column="StudentID"
+			select="com.qdu.mapping.TeacherFeedBackMapping.getTeacherFeedBackListByStudent" />
 	</resultMap>
 
+	<select id="selectStudentById" resultMap="StudentResult">
+		select * from
+		Student
+		where StudentID = #{studentId}
+	</select>
+
+	<select id="getStudentListByBatch" parameterType="int"
+		resultMap="StudentResult">
+		select * from
+		Student where StudentBatch=#{cid}
+	</select>
+	
+	<update id="updateStudent" parameterType="com.qdu.pojo.Student">
+		update Student set
+		StudentName = #{studentName},
+		StudentGender = #{studentGender},
+		StudentGrade = #{studentGrade},
+		StudentBatch = #{batch.cid}
+		where StudentID= #{studentId}
+	</update>
 </mapper>
 

@@ -4,38 +4,34 @@
 	<resultMap type="com.qdu.pojo.TeacherFeedBack" id="TeacherFeedBackResult">
 		<id property="fid" column="FID" />
 		<result property="foption" column="FOption" />
-		
-		
-		<association property="teacherFeedBackQuestion" javaType="com.qdu.pojo.TeacherFeedBackQuestion">
-			<id property="qid" column="QID" />
-			<result property="qcontent" column="QContent" />
-			
-			<association property="teacher" javaType="com.qdu.pojo.Teacher">
-			<id property="teacherId" column="TeacherID" />
-			<result property="teacherName" column="TeacherName" />
-			<result property="teacherPwd" column="TeacherPwd" />
-			<result property="teacherGender" column="TeacherGender" />
-			</association>
-			
-		</association>
-		
-				<association property="student" javaType="com.qdu.pojo.Student">
-			<id property="studentId" column="StudentID" />
-			<result property="studentName" column="StudentName" />
-			<result property="studentPwd" column="StudentPwd" />
-			<result property="studentGender" column="StudentGender" />
-			<result property="studentGrade" column="StudentGrade" />
-			
-			<association property="batch" javaType="com.qdu.pojo.Batch">
-			<id property="cid" column="CID" />
-			<result property="cyear" column="CYear" />
-			<result property="cname" column="CName" />
-			</association>
-			
-		</association>
-		
-		
+		<association property="teacherFeedBackQuestion" column="FQuestion"
+			select="com.qdu.mapping.TeacherFeedBackQuestionMapping.selectTeacherFeedBackQuestionById" />
+		<association property="student" column="StudentID"
+			select="com.qdu.mapping.StudentMapping.selectStudentById" />	
 	</resultMap>
+	
+	<select id="getTeacherFeedBackListByTFQ" parameterType="int"
+		resultMap="TeacherFeedBackResult">
+		select * from
+		teacherfeedback where
+		FQuestion=#{qid}
+	</select>
+	
+	<select id="getTeacherFeedBackListByStudent" parameterType="String"
+		resultMap="TeacherFeedBackResult">
+		select * from
+		teacherfeedback where
+		StudentID=#{teacherId}
+	</select>
+	
+	<select id="getTeacherFeedBackListByTeacher" parameterType="String"
+		resultMap="TeacherFeedBackResult">
+		SELECT tf.* FROM teacher t, teacherfeedback tf,
+		teacherfeedbackquestion tfq
+		WHERE t.TeacherID=tfq.TeacherID
+		AND tf.FQuestion=tfq.QID
+		AND t.TeacherID=#{teacherId}
+	</select>
 
 </mapper>
 

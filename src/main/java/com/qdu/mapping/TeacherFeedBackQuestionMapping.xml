@@ -3,26 +3,19 @@
 <mapper namespace="com.qdu.mapping.TeacherFeedBackQuestionMapping">
 	<resultMap type="com.qdu.pojo.TeacherFeedBackQuestion" id="TeacherFeedBackQuestionResult">
 		<id property="qid" column="QID" />
-			<result property="qcontent" column="QContent" />
-		
-			
-			<association property="course" javaType="com.qdu.pojo.Course">
-			<id property="courseId" column="CourseID" />
-			<result property="courseName" column="CourseName" />
-			<result property="courseExamMethod" column="CourseExamMethod" />
-			<result property="coursecredit" column="Coursecredit" />
-			<result property="courseSchoolHour" column="CourseSchoolHour" />
-			
-			<association property="teacher" javaType="com.qdu.pojo.Teacher">
-			<id property="teacherId" column="TeacherID" />
-			<result property="teacherName" column="TeacherName" />
-			<result property="teacherPwd" column="TeacherPwd" />
-			<result property="teacherGender" column="TeacherGender" />
-			</association>
-			
-			</association>
-
+		<result property="qcontent" column="QContent" />
+		<association property="teacher" column="TeacherID"
+			select="com.qdu.mapping.TeacherMapping.selectTeacherById" />
+		<collection property="teacherFeedBacks" column="QID"
+			select="com.qdu.mapping.TeacherFeedBackMapping.getTeacherFeedBackListByTFQ" />
 	</resultMap>
+
+	<select id="selectTeacherFeedBackQuestionById" resultMap="TeacherFeedBackQuestionResult">
+		select
+		* from
+		TeacherFeedBackQuestion
+		where QID = #{qid}
+	</select>
 
 </mapper>
 

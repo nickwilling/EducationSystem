@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qdu.mapping.TeachingProgramDetailMapping">
-	<resultMap type="com.qdu.pojo.TeachingProgramDetail" id="TeachingProgramDetail">
+	<resultMap type="com.qdu.pojo.TeachingProgramDetail" id="TeachingProgramDetailResult">
 		<id property="tpdid" column="TPDID" />
 		<result property="tpdyear" column="TPDYear" />
 		<result property="tpdseason" column="TPDSeason" />
@@ -9,43 +9,69 @@
 		<result property="tpdweekDay" column="TPDWeekDay" />
 		<result property="tpdlessonTime" column="TPDLessonTime" />
 		<result property="tpdlocation" column="TPDLocation" />
-			
-			<association property="teachingProgram" javaType="com.qdu.pojo.TeachingProgram">
-			<id property="tid" column="TID" />
-			
-			<association property="batch" javaType="com.qdu.pojo.Batch">
-			<id property="cid" column="CID" />
-			<result property="cyear" column="CYear" />
-			<result property="cname" column="CName" />
-			</association>
-			
-			<association property="course" javaType="com.qdu.pojo.Course">
-			<id property="courseId" column="CourseID" />
-			<result property="courseName" column="CourseName" />
-			<result property="courseExamMethod" column="CourseExamMethod" />
-			<result property="coursecredit" column="Coursecredit" />
-			<result property="courseSchoolHour" column="CourseSchoolHour" />
-			
-			<association property="teacher" javaType="com.qdu.pojo.Teacher">
-			<id property="teacherId" column="TeacherID" />
-			<result property="teacherName" column="TeacherName" />
-			<result property="teacherPwd" column="TeacherPwd" />
-			<result property="teacherGender" column="TeacherGender" />
-			</association>
-			
-			</association>
-			
-			<association property="teacher" javaType="com.qdu.pojo.Teacher">
-			<id property="teacherId" column="TeacherID" />
-			<result property="teacherName" column="TeacherName" />
-			<result property="teacherPwd" column="TeacherPwd" />
-			<result property="teacherGender" column="TeacherGender" />
-			</association>
-			
-			</association>
-			
-
+		<association property="teachingProgram" column="TID"
+			select="com.qdu.mapping.TeachingProgramMapping.selectTeachingProgramById" />
+		<collection property="attendances" column="TPDID"
+			select="com.qdu.mapping.AttendanceMapping.getAttendanceListByTPD" />
 	</resultMap>
 
+	<select id="selectTeachingProgramDetailById" resultMap="TeachingProgramDetailResult">
+		select *
+		from
+		TeachingProgramDetail
+		where TPDID = #{id}
+	</select>
+
+	<select id="getTeachingProgramDetailListByTP" parameterType="int"
+		resultMap="TeachingProgramDetailResult">
+		select * from
+		TeachingProgramDetail where TID=#{tid}
+	</select>
+	
+	<select id="getListByYS" parameterType="HashMap"
+		resultMap="TeachingProgramDetailResult">
+		select * from 
+		TeachingProgramDetail where TPDYear=#{year} and TPDSeason=#{season}
+	</select>
+	
+	<select id="getListByDay" parameterType="String"
+		resultMap="TeachingProgramDetailResult">
+		select * from 
+		TeachingProgramDetail where TPDWeekDay=#{day}
+	</select>
+	
+	<select id="getListByTeacher" parameterType="String"
+		resultMap="TeachingProgramDetailResult">
+		select tpd.* from TeachingProgramDetail as tpd,TeachingProgram as tp 
+		where tp.TID=tpd.TID and tp.TTeacher=#{teacherId}
+	</select>
+	
+	<select id="getListByLocation" parameterType="String"
+		resultMap="TeachingProgramDetailResult">
+		select * from
+		TeachingProgramDetail where TPDLocation=#{location}
+	</select>
+	
+	<insert id="insertTPD" parameterType="com.qdu.pojo.TeachingProgramDetail"
+		useGeneratedKeys="true" keyProperty="tpdid">
+		insert into TeachingProgramDetail(TID,TPDYear,TPDSeason,TPDWeek,TPDWeekDay,TPDLessonTime,TPDLocation)
+		values(#{teachingProgram.tid},#{tpdyear},#{tpdseason},#{tpdweek},#{tpdweekDay},#{tpdlessonTime},#{tpdlocation})
+	</insert>
+	
+	<delete id="deleteTP" parameterType = "int">
+
+	delete from TeachingProgramDetail where TPDID = #{id}
+	</delete>
+	
+	<update id="updateTPD" parameterType="com.qdu.pojo.TeachingProgramDetail">
+		update TeachingProgramDetail set
+		TPDYear = #{tpdyear},
+		TPDSeason = #{tpdseason},
+		TPDWeek = #{tpdweek},
+		TPDWeekDay = #{tpdweekDay},
+		TPDLessonTime = #{tpdlessonTime},
+		TPDLocation= #{tpdlocation}
+		where TPDID= #{tpdid}
+	</update>
 </mapper>
 

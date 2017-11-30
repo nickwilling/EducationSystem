@@ -3,6 +3,8 @@ package com.qdu.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 public class TeacherFeedBackQuestion {
 
@@ -35,6 +37,7 @@ public class TeacherFeedBackQuestion {
     public void setQid(int qid) {
         this.qid = qid;
     }
+    
     public Teacher getTeacher() {
         return this.teacher;
     }

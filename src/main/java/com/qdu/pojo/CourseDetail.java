@@ -1,5 +1,6 @@
 package com.qdu.pojo;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 public class CourseDetail{
 
@@ -26,6 +27,7 @@ public class CourseDetail{
     public void setCdetailId(String cdetailId) {
         this.cdetailId = cdetailId;
     }
+    
     public Course getCourse() {
         return this.course;
     }

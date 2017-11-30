@@ -2,11 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qdu.mapping.TeacherMapping">
 	<resultMap type="com.qdu.pojo.Teacher" id="TeacherResult">
-			<id property="teacherId" column="TeacherID" />
-			<result property="teacherName" column="TeacherName" />
-			<result property="teacherPwd" column="TeacherPwd" />
-			<result property="teacherGender" column="TeacherGender" />
+		<id property="teacherId" column="TeacherID" />
+		<result property="teacherName" column="TeacherName" />
+		<result property="teacherPwd" column="TeacherPwd" />
+		<result property="teacherGender" column="TeacherGender" />
+		<collection property="courses" column="TeacherID"
+			select="com.qdu.mapping.CourseMapping.getCourseListByTeacher" />
+		<collection property="teachingPrograms" column="TeacherID"
+			select="com.qdu.mapping.TeachingProgramMapping.getTeachingProgramListByTeacher" />
+		<collection property="teacherFeedBacks" column="TeacherID"
+			select="com.qdu.mapping.TeacherFeedBackMapping.getTeacherFeedBackListByTeacher" />
 	</resultMap>
 
+	<select id="selectTeacherById" resultMap="TeacherResult">
+		select * from
+		Teacher
+		where TeacherID = #{teacherId}
+	</select>
 </mapper>
 

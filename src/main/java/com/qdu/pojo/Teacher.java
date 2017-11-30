@@ -38,49 +38,49 @@ public class Teacher{
         return this.teacherId;
     }
     
-    public void ListTeacherId(String teacherId) {
+    public void setTeacherId(String teacherId) {
         this.teacherId = teacherId;
     }
     public String getTeacherName() {
         return this.teacherName;
     }
     
-    public void ListTeacherName(String teacherName) {
+    public void setTeacherName(String teacherName) {
         this.teacherName = teacherName;
     }
     public String getTeacherPwd() {
         return this.teacherPwd;
     }
     
-    public void ListTeacherPwd(String teacherPwd) {
+    public void setTeacherPwd(String teacherPwd) {
         this.teacherPwd = teacherPwd;
     }
     public String getTeacherGender() {
         return this.teacherGender;
     }
     
-    public void ListTeacherGender(String teacherGender) {
+    public void setTeacherGender(String teacherGender) {
         this.teacherGender = teacherGender;
     }
     public List<TeacherFeedBack> getTeacherFeedBacks() {
         return this.teacherFeedBacks;
     }
     
-    public void ListTeacherFeedBacks(List<TeacherFeedBack> teacherFeedBacks) {
+    public void setTeacherFeedBacks(List<TeacherFeedBack> teacherFeedBacks) {
         this.teacherFeedBacks = teacherFeedBacks;
     }
     public List<Course> getCourses() {
         return this.courses;
     }
     
-    public void ListCourses(List<Course> courses) {
+    public void setCourses(List<Course> courses) {
         this.courses = courses;
     }
     public List<TeachingProgram> getTeachingPrograms() {
         return this.teachingPrograms;
     }
     
-    public void ListTeachingPrograms(List<TeachingProgram> teachingPrograms) {
+    public void setTeachingPrograms(List<TeachingProgram> teachingPrograms) {
         this.teachingPrograms = teachingPrograms;
     }
 

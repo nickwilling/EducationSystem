@@ -5,6 +5,8 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 public class Attendance {
 
 
@@ -35,6 +37,7 @@ public class Attendance {
     public void setAid(int aid) {
         this.aid = aid;
     }
+    
     public Student getStudent() {
         return this.student;
     }
@@ -42,9 +45,12 @@ public class Attendance {
     public void setStudent(Student student) {
         this.student = student;
     }
+    
+    
     public TeachingProgramDetail getTeachingProgramDetail() {
         return this.teachingProgramDetail;
     }
+    
     
     public void setTeachingProgramDetail(TeachingProgramDetail teachingProgramDetail) {
         this.teachingProgramDetail = teachingProgramDetail;

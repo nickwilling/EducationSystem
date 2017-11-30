@@ -3,9 +3,17 @@
 <mapper namespace="com.qdu.mapping.BatchMapping">
 	<resultMap type="com.qdu.pojo.Batch" id="BatchResult">
 		<id property="cid" column="CID" />
-			<result property="cyear" column="CYear" />
-			<result property="cname" column="CName" />
+		<result property="cyear" column="CYear" />
+		<result property="cname" column="CName" />
+		<collection property="teachingPrograms" column="CID"  select="com.qdu.mapping.TeachingProgramMapping.getTeachingProgramListByBatch"/>  
+		<collection property="students" column="CID"  select="com.qdu.mapping.StudentMapping.getStudentListByBatch"/>  
 	</resultMap>
-
+	
+	<select id="selectBatchById" resultMap="BatchResult">
+		select * from
+		Batch
+		where CID = #{cid}
+	</select>
+	
 </mapper>
 

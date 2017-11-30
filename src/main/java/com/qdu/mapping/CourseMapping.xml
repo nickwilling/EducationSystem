@@ -3,23 +3,31 @@
 <mapper namespace="com.qdu.mapping.CourseMapping">
 	<resultMap type="com.qdu.pojo.Course" id="CourseResult">
 		<id property="courseId" column="CourseID" />
-			<result property="courseName" column="CourseName" />
-			<result property="courseExamMethod" column="CourseExamMethod" />
-			<result property="coursecredit" column="Coursecredit" />
-			<result property="courseSchoolHour" column="CourseSchoolHour" />
-			
-			<association property="teacher" javaType="com.qdu.pojo.Teacher">
-			<id property="teacherId" column="TeacherID" />
-			<result property="teacherName" column="TeacherName" />
-			<result property="teacherPwd" column="TeacherPwd" />
-			<result property="teacherGender" column="TeacherGender" />
-			</association>
+		<result property="courseName" column="CourseName" />
+		<result property="courseExamMethod" column="CourseExamMethod" />
+		<result property="coursecredit" column="Coursecredit" />
+		<result property="courseSchoolHour" column="CourseSchoolHour" />
+		<association property="teacher" column="TeacherID"
+			select="com.qdu.mapping.TeacherMapping.selectTeacherById" />
+		<collection property="courseDetails" column="CourseID"
+			select="com.qdu.mapping.CourseDetailMapping.getCourseDetailList" />
+		<collection property="courseFeedBacks" column="CourseID"
+			select="com.qdu.mapping.CourseFeedBackMapping.getCourseFeedBackList" />
+		<collection property="teachingPrograms" column="CourseID"
+			select="com.qdu.mapping.TeachingProgramMapping.getTeachingProgramList" />
 	</resultMap>
-	
+
 	<select id="selectCourseById" resultMap="CourseResult">
 		select * from
 		Course
 		where CourseId = #{courseId}
 	</select>
+
+	<select id="getCourseListByTeacher" parameterType="String"
+		resultMap="CourseResult">
+		select * from
+		Course where TeacherID=#{teacherId}
+	</select>
+
 </mapper>
 

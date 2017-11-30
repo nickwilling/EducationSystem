@@ -4,47 +4,39 @@
 	<resultMap type="com.qdu.pojo.CourseFeedBack" id="CourseFeedBackResult">
 		<id property="fid" column="FID" />
 		<result property="foption" column="FOption" />
-		
-		
-		<association property="student" javaType="com.qdu.pojo.Student">
-			<id property="studentId" column="StudentID" />
-			<result property="studentName" column="StudentName" />
-			<result property="studentPwd" column="StudentPwd" />
-			<result property="studentGender" column="StudentGender" />
-			<result property="studentGrade" column="StudentGrade" />
-			
-			<association property="batch" javaType="com.qdu.pojo.Batch">
-			<id property="cid" column="CID" />
-			<result property="cyear" column="CYear" />
-			<result property="cname" column="CName" />
-			</association>
-			
-		</association>
-		
-		<association property="courseFeedBackQuestion" javaType="com.qdu.pojo.CourseFeedBackQuestion">
-			<id property="qid" column="QID" />
-			<result property="qcontent" column="QContent" />
-		
-			
-			<association property="course" javaType="com.qdu.pojo.Course">
-			<id property="courseId" column="CourseID" />
-			<result property="courseName" column="CourseName" />
-			<result property="courseExamMethod" column="CourseExamMethod" />
-			<result property="coursecredit" column="Coursecredit" />
-			<result property="courseSchoolHour" column="CourseSchoolHour" />
-			
-			<association property="teacher" javaType="com.qdu.pojo.Teacher">
-			<id property="teacherId" column="TeacherID" />
-			<result property="teacherName" column="TeacherName" />
-			<result property="teacherPwd" column="TeacherPwd" />
-			<result property="teacherGender" column="TeacherGender" />
-			</association>
-			
-			</association>
-			
-		</association>
-
+		<association property="student" column="StudentID"
+			select="com.qdu.mapping.StudentMapping.selectStudentById" />
+		<association property="courseFeedBackQuestion" column="FQuestion"
+			select="com.qdu.mapping.CourseFeedBackQuestionMapping.selectCourseFeedBackQuestionById" />
 	</resultMap>
+
+	<select id="selectCourseFeedBackById" resultMap="CourseFeedBackResult">
+		select * from
+		CourseFeedBack
+		where FID = #{fid}
+	</select>
+
+	<select id="getCourseFeedBackList" parameterType="String"
+		resultMap="CourseFeedBackResult">
+		select cf.*
+		from course c,coursefeedback cf,coursefeedbackquestion cfq
+		WHERE c.CourseID=cfq.CourseId
+		and cf.FQuestion=cfq.QID
+		and c.CourseID=#{courseId}
+	</select>
+
+	<select id="getCourseFeedBackListByCFQ" parameterType="int"
+		resultMap="CourseFeedBackResult">
+		select * from
+		coursefeedback where
+		FQuestion=#{courseFeedBackQuestion.qid}
+	</select>
+
+	<select id="getCourseFeedBackListByStudent" parameterType="String"
+		resultMap="CourseFeedBackResult">
+		select * from
+		coursefeedback where StudentID=#{studentId}
+	</select>
 
 </mapper>
 

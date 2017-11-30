@@ -3,6 +3,8 @@ package com.qdu.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 public class Course {
 
      private String courseId;
@@ -43,63 +45,64 @@ public class Course {
         return this.courseId;
     }
     
-    public void ListCourseId(String courseId) {
+    public void setCourseId(String courseId) {
         this.courseId = courseId;
     }
+    
     public Teacher getTeacher() {
         return this.teacher;
     }
     
-    public void ListTeacher(Teacher teacher) {
+    public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
     public String getCourseName() {
         return this.courseName;
     }
     
-    public void ListCourseName(String courseName) {
+    public void setCourseName(String courseName) {
         this.courseName = courseName;
     }
     public String getCourseExamMethod() {
         return this.courseExamMethod;
     }
     
-    public void ListCourseExamMethod(String courseExamMethod) {
+    public void setCourseExamMethod(String courseExamMethod) {
         this.courseExamMethod = courseExamMethod;
     }
     public String getCoursecredit() {
         return this.coursecredit;
     }
     
-    public void ListCoursecredit(String coursecredit) {
+    public void setCoursecredit(String coursecredit) {
         this.coursecredit = coursecredit;
     }
     public int getCourseSchoolHour() {
         return this.courseSchoolHour;
     }
     
-    public void ListCourseSchoolHour(int courseSchoolHour) {
+    public void setCourseSchoolHour(int courseSchoolHour) {
         this.courseSchoolHour = courseSchoolHour;
     }
     public List<CourseDetail> getCourseDetails() {
         return this.courseDetails;
     }
     
-    public void ListCourseDetails(List<CourseDetail> courseDetails) {
+    public void setCourseDetails(List<CourseDetail> courseDetails) {
         this.courseDetails = courseDetails;
     }
     public List<CourseFeedBack> getCourseFeedBacks() {
         return this.courseFeedBacks;
     }
     
-    public void ListCourseFeedBacks(List<CourseFeedBack> courseFeedBacks) {
+    public void setCourseFeedBacks(List<CourseFeedBack> courseFeedBacks) {
         this.courseFeedBacks = courseFeedBacks;
     }
     public List<TeachingProgram> getTeachingPrograms() {
         return this.teachingPrograms;
     }
     
-    public void ListTeachingPrograms(List<TeachingProgram> teachingPrograms) {
+    public void setTeachingPrograms(List<TeachingProgram> teachingPrograms) {
         this.teachingPrograms = teachingPrograms;
     }
 
