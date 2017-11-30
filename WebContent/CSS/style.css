@@ -1,0 +1,211 @@
+body{
+    font-family:"Comic Sans MS", cursive;
+    /*background-color:rgba(51,51,52,0.01);*/
+}
+.header{
+    background-color:rgba(51,51,51,1);
+    width: 100%;
+    height: 33px;
+    font-size: 17px;
+    padding-top: 4px;
+}
+.header a{
+    color: white;
+}
+.dropdown-menu>li>a{
+    color:black;
+}
+.header a:hover{
+    background-color:rgba(51,51,51,0.8);
+    color:#CCC;
+    text-decoration: none;
+}
+.container{
+    width: 100%;
+    margin: 0 auto;
+    background-image: url(../image/2.jpg);
+    background-repeat:no-repeat;
+    background-size: cover;
+}
+.login{
+    width: 26%;
+    height: 380px;
+    text-align: center;
+    margin-left: 920px;
+    margin-top: -260px;
+    margin-bottom: 40px;
+    border-radius: 40px;
+    background: rgba(80,110,150,0.8);
+}
+.register{
+    width: 26%;
+    height: 450px;
+    text-align: center;
+    margin-left: 920px;
+    margin-top: -300px;
+    margin-bottom: 40px;
+    border-radius: 40px;
+    background: rgba(80,110,150,0.8);
+}
+.welcome{
+    width: 60%;
+    text-align: center;
+    margin-top: 220px;
+    font-size: 60px;
+    color:#ffffff;
+    opacity:0.78;
+}
+.input{
+    width: 75%;
+    height: 34px;
+    margin-top: 26px;
+    border-radius: 12px;
+}
+.code{
+    display: inline;
+    margin-top: 30px;
+    width: 47%;
+    height: 30px;
+    border-radius: 12px;
+}
+#myCanvas{
+    width:100px;
+    height:50px;
+    background-color:rgb(80,110,150);
+    position:relative;
+    top:15px;
+}
+.loginButton{
+    margin-top: 10px;
+    border-radius: 8px;
+    width: 105px;
+    height: 38px;
+    background-color: #ffffff;
+    font-size: 22px;
+    font-family:"Comic Sans MS", cursive; 
+}
+.reg{
+    font-size: 20px;
+    margin-left: 250px;
+    color:  #fbfbfb;
+}
+.reg:hover{
+    color: #3d4d7b;
+}
+.teachWrap{
+    margin: 0 auto;
+    width: 80%;
+    min-height: 600px;
+    border: solid 1px #e9e9e9;
+    border-radius: 30px;
+    margin-bottom: 40px;
+    margin-top: -8px;
+}
+.inputSearch{
+    width: 15%;
+    border-radius: 10px;
+}
+.li{
+    width:86%;
+    padding-top: 20px;
+    margin-left: 65px;
+}
+hr{
+    color: #e9e9e9;
+    width: 90%;
+    margin-top: 2px;
+}
+.div div{
+    display: none;
+}
+.admin{
+    font-size: 16px;
+    color: #122b40;
+    float: right;
+    margin-top: -40px;
+    margin-right: 130px;
+}
+.admin a{
+    text-decoration: none;
+}
+.div2 span{
+    font-size: 18px;
+    color: #122b40;
+    margin-left: 65px;
+    margin-right: 15px;
+}
+.inputID{
+    width: 45%;
+    border-radius: 6px;
+}
+.div2{
+    padding-top: 12px;
+    margin-bottom: 30px;
+}
+.addbtn{
+    background-color: #337AB7;
+    width: 9%;
+    height: 38px;
+    margin-left: 300px;
+}
+.span span{
+    display: none;
+}
+.table{
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 95%;
+}
+.inputName{
+    width: 25%;
+    border-radius: 6px;
+    height: 34px;
+    margin-left: 50px;
+}
+.div5{
+    padding-top: 24px;
+}
+.div5 span{
+    font-size: 18px;
+    color: #122b40;
+    margin-left: 65px;
+    margin-right: 15px;
+}
+.div8{
+    padding-top: 24px;
+}
+.div8 span{
+    font-size: 18px;
+    color: #122b40;
+    margin-left: 65px;
+    margin-right: 15px;
+}
+.div10{
+    padding-top: 24px;
+}
+.div10 span{
+    font-size: 18px;
+    color: #122b40;
+    margin-left: 65px;
+    margin-right: 15px;
+}
+#foot{
+    height:200px;
+    width:100%;
+    background-color:#000;
+    color:white;
+    text-align:center;
+}
+#footspan{
+    font-size:30px;
+}
+#footinner>a{
+    color:white;
+    font-size:16px;
+    text-decoration:none;
+}
+#footinner>a:hover{
+    color:#99F;
+}
+
+
