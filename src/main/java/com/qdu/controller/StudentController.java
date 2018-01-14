@@ -33,7 +33,7 @@ public class StudentController {
      map.addAttribute("stuList",studentService.getStudentList());
     return "Student";
     }
-    
+    //
     @RequestMapping(value="/welcome.do")
     public String welcome(String username,String password,ModelMap map,HttpSession session){
         Student student = studentService.findStudent(username, password);

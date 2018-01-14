@@ -14,7 +14,7 @@
     </head>
     <body>
                        <div class="alter1">
-            <h1>欢迎登录</h1>
+            <h1> 欢迎登录</h1>
         </div>
         <div class="alter2">
             <ul>
