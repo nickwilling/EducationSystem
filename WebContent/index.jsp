@@ -8,5 +8,7 @@
 </head>
 <body>
 <a href="<%=request.getContextPath() %>/admin/showIndex.do?courseId=C00000000001">点击</a>
+<a href="login.jsp">学生登录</a>
+<a href="login_T.jsp">教师登录</a>
 </body>
 </html>
